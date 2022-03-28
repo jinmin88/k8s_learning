@@ -1,4 +1,4 @@
-# 基本概念
+# Introduction
 1. 一台機器稱做一個`node`(or minion)
 1. 一個`cluster` 是多個`node`的集合
 1. K8S Components
