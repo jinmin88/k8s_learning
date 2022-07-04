@@ -73,8 +73,13 @@
     nodeSelector:
       disk_type: ssd
   ```
-
 * How to list all node's label?
-```
-kubectl get nodes --show-labels
-```
+  ```
+  kubectl get nodes --show-labels
+  ```
+* `nodeSelector`'s disadvantage?
+  * 只能用key=value的方式選擇我要在哪個pod上run，無法設定條件，若要設定條件，則使用`nodeAffinity`。
+
+## Node affinity
+
+
