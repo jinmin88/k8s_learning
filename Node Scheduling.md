@@ -81,5 +81,48 @@
   * 只能用key=value的方式選擇我要在哪個pod上run，無法設定條件，若要設定條件，則使用`nodeAffinity`。
 
 ## Node affinity
-
-
+* Node affinity has two categories:
+  * `requiredDuringSchedulingIgnoredDuringExecution`
+  * `perferredDuringSchedulingIgnoredDuringExecution`
+* It's consist of three parts:
+  * `requiredDuringScheduling`: 一定要node符合條件，才會把pod分派上去
+  * `perferredDuringScheduling`: 會盡量嘗試尋找符合條件的node，但是不強制
+  * `IgnoredDuringExecution`: 表示不會影像正在運作中的pod
+* node affinity example:
+  ``` yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: with-node-affinity
+  spec:
+    affinity:
+      nodeAffinity:
+        # 一定要滿足以下條件才可作 pod scheduling
+        requiredDuringSchedulingIgnoredDuringExecution:
+          # nodeSelector 的條件定義
+          nodeSelectorTerms:
+          - matchExpressions:
+            # node 一定有帶有 以下任何一種 label 才可以
+            # "kubernetes.io/e2e-az-name=e2e-az1"
+            # "kubernetes.io/e2e-az-name=e2e-az2"
+            - key: kubernetes.io/e2e-az-name
+              operator: In
+              values:
+              - e2e-az1
+              - e2e-az2
+        # 儘量滿足以下條件即可作 pod scheduling
+        preferredDuringSchedulingIgnoredDuringExecution:
+        # 這是屬於 prefer 的權重設定(1-100)，符合條件就會得到此權重值
+        # pod 會被分配到最後加總數值最高的 node
+        - weight: 1
+          preference:
+            matchExpressions:
+            # 儘量尋找帶有 label "another-node-label-key=another-node-label-value" 的 node
+            - key: another-node-label-key
+              operator: In
+              values:
+              - another-node-label-value
+    containers:
+    - name: with-node-affinity
+      image: k8s.gcr.io/pause:2.0
+  ```
