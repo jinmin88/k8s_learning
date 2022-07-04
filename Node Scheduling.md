@@ -84,6 +84,7 @@
 * Node affinity has two categories:
   * `requiredDuringSchedulingIgnoredDuringExecution`
   * `perferredDuringSchedulingIgnoredDuringExecution`
+  * `requiredDuringSchedulingRequiredDuringExecution`
 * It's consist of three parts:
   * `requiredDuringScheduling`: 一定要node符合條件，才會把pod分派上去
   * `perferredDuringScheduling`: 會盡量嘗試尋找符合條件的node，但是不強制
