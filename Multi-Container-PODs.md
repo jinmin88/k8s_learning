@@ -20,3 +20,4 @@ spec:
     image: busybox
     command: ['sh', '-c', 'git clone <some-repository-that-will-be-used-by-application> ;']
 ```
+If any of the initContainers fail to complete, Kubernetes restarts the Pod repeatedly until the Init Container succeeds.
