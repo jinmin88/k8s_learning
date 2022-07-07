@@ -1,5 +1,6 @@
 # Observability
-## Readiness and Liveness Probes
+## `Readiness Probe` & `Liveness Probe`
+> `Readiness Probe` is used to check container is in ready status. `Liveness Probe` is used to detect the live status on a ready container. and control the restart action
 * POD Status
   * `Pending`
   * `ContainerCreating`
@@ -51,5 +52,7 @@
           - /app/is_ready
       initialDelaySeconds: 10
       periodSeconds: 5
+      failureThreshold: 8
     ```
-  *  
+ ## Liveness Probe
+ The same as `readiness probe`
