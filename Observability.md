@@ -56,3 +56,15 @@
     ```
  ## Liveness Probe
  The same as `readiness probe`
+ 
+ ## Contianer Logging
+ ### Docker logging
+ ``` docker logs -f [contaien_id] ```
+ ### Pod logging
+ ``` kubectl logs -f [pod_name] ```
+ ### Multiple container in pod
+ ``` kubectl logs -f [pod_name] [container_name] ```
+ 
+ 
+ 
+ 
