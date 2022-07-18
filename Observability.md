@@ -65,6 +65,15 @@
  ### Multiple container in pod
  ``` kubectl logs -f [pod_name] [container_name] ```
  
- 
- 
- 
+ ## Monitoring Kubernetes
+ ### OSS monitor solution
+ * METRICS SERVER
+ * Prometheus
+ * Elastic Stack
+ * DATADOG
+ * Dynatrace
+ ### METRICS SERVER
+ * kubelet sub component - cAdvisor
+ * minikube addons enable metrics-server
+ * list top node: `kubectl top node`
+ * list top pod: `kubectl top pod`
