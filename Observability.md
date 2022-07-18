@@ -74,6 +74,11 @@
  * Dynatrace
  ### METRICS SERVER
  * kubelet sub component - cAdvisor
- * minikube addons enable metrics-server
+ * install metrics-server
+   * minikube
+     * ```minikube addons enable metrics-server```
+   * other 
+     * ``` git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git```
+     * ``` kubectl create -f . ``` 
  * list top node: `kubectl top node`
  * list top pod: `kubectl top pod`
