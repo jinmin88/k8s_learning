@@ -38,7 +38,19 @@ spec:
       containers:
        ...
 ```
-
+### Annotations
+``` yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: simple-webapp
+  labels:
+    app: App1
+    function: Front-end
+  annotations:
+    buildversion: 1.34
+    # other detail information
+```
 
 ## Rolling updates & Rollebacks in Deployments
 ## Job and CronJobs
