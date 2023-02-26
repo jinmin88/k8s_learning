@@ -1,5 +1,0 @@
-1. Create a `cronjob` name `ppi` and run the following pod:
-   * name: `pi`
-   * image: `perl:5`
-   * command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]
-   
